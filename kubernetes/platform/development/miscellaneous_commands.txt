@@ -1,17 +1,17 @@
 
+## Get all background services and application services up and running
+
 ## prior to create-cluster.sh
-
-./create-cluster.sh
-
-kubectl get all -n ingress-nginx
-
- minikube ip --profile polar
-
+## done once - doesn't have to done again
  echo "<minikube ip> polar-keycloak" | sudo tee -a /etc/hosts
  e.g.  echo "192.168.58.2 polar-keycloak" | sudo tee -a /etc/hosts
 
- minikube tunnel --profile polar
+./create-cluster.sh
 
- linux:  http <minikube ip>/books
- e.g. http 192.168.58.2/books
- windows:  http 127.0.0.1/books
+minikube tunnel --profile polar
+
+polar-deployment/kubernetes/applications/development$ tilt up
+
+ Browser:
+ localhost:9000 (edge service)
+ polar-keycloak (keycloak)
